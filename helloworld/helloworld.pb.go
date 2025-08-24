@@ -7,11 +7,12 @@
 package helloworld
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -23,6 +24,7 @@ const (
 
 type HelloWorldRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -55,6 +57,13 @@ func (x *HelloWorldRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use HelloWorldRequest.ProtoReflect.Descriptor instead.
 func (*HelloWorldRequest) Descriptor() ([]byte, []int) {
 	return file_helloworld_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *HelloWorldRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 type HelloWorldResponse struct {
@@ -106,8 +115,9 @@ var File_helloworld_proto protoreflect.FileDescriptor
 const file_helloworld_proto_rawDesc = "" +
 	"\n" +
 	"\x10helloworld.proto\x12\n" +
-	"helloworld\"\x13\n" +
-	"\x11HelloWorldRequest\".\n" +
+	"helloworld\"'\n" +
+	"\x11HelloWorldRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\".\n" +
 	"\x12HelloWorldResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage2`\n" +
 	"\x11HelloWorldService\x12K\n" +

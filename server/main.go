@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net"
 
@@ -14,7 +15,7 @@ type Server struct {
 }
 
 func (s *Server) SayHello(ctx context.Context, in *pb.HelloWorldRequest) (*pb.HelloWorldResponse, error) {
-	return &pb.HelloWorldResponse{Message: "Hello! My name is Varnit!"}, nil
+	return &pb.HelloWorldResponse{Message: fmt.Sprintf("My name is %s", in.Name)}, nil
 }
 
 func main() {

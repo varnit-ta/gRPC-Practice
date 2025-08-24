@@ -8,7 +8,9 @@ service HelloWorldService {
   rpc SayHello(HelloWorldRequest) returns (HelloWorldResponse) {}
 }
 
-message HelloWorldRequest {}
+message HelloWorldRequest {
+  string name = 1;
+}
 
 message HelloWorldResponse {
   string message = 1;
